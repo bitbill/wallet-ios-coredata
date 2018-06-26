@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "BitRecord"
-  s.version      = "0.0.1"
+  s.version      = "0.0.3"
   s.summary      = "BitRecord"
 
   # This description is used to generate tags and improve search results.
@@ -24,7 +24,9 @@ Pod::Spec.new do |s|
   #   * Try to keep it short, snappy and to the point.
   #   * Write the description between the DESC delimiters below.
   #   * Finally, don't worry about the indent, CocoaPods strips it!
-  s.description  = "BitRecord means 'BitBill Coredata Record'. BitRecord is Protocol Oriented Programming in Swift for CoreData, it consult the github Project named 'SugarRecord'"
+  s.description  = <<-DESC
+  BitRecord means 'BitBill Coredata Record'. BitRecord is Protocol Oriented Programming in Swift for CoreData, it consult the github Project named 'SugarRecord'
+                  DESC
 
   s.homepage     = "https://github.com/bitbill/wallet-ios-coredata"
   # s.screenshots  = "www.example.com/screenshots_1.gif", "www.example.com/screenshots_2.gif"
@@ -63,8 +65,8 @@ Pod::Spec.new do |s|
   #
 
   # s.platform     = :ios
-  # s.platform     = :ios, "5.0"
-
+   s.swift_version = '3.2'
+   s.platform     = :ios,'8.0'
   #  When using multiple platforms
   # s.ios.deployment_target = "5.0"
   # s.osx.deployment_target = "10.7"
@@ -89,7 +91,7 @@ Pod::Spec.new do |s|
   #  Not including the public_header_files will make all headers public.
   #
 
-  s.source_files  = "Persistent", "Persistent/*.swift"
+  s.source_files  = "Persistent", "Persistent/**/*.{h,m,swift}"
   s.exclude_files = "Persistent/CoreData"
 
   # s.public_header_files = "Classes/**/*.h"

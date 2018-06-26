@@ -517,9 +517,9 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.bitbill.coredataDemo.CoreDataDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_INSTALL_OBJC_HEADER = YES;
-				SWIFT_OBJC_BRIDGING_HEADER = "/Users/bitbill/workspace/CoreDataDemo/CoreDataDemo/CoreDataDemo-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "CoreDataDemo/CoreDataDemo-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -540,8 +540,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.bitbill.coredataDemo.CoreDataDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_INSTALL_OBJC_HEADER = YES;
-				SWIFT_OBJC_BRIDGING_HEADER = "/Users/bitbill/workspace/CoreDataDemo/CoreDataDemo/CoreDataDemo-Bridging-Header.h";
-				SWIFT_VERSION = 4.0;
+				SWIFT_OBJC_BRIDGING_HEADER = "CoreDataDemo/CoreDataDemo-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
