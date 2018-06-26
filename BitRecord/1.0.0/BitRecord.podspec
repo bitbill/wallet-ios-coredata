@@ -92,7 +92,7 @@ Pod::Spec.new do |s|
   #
 
   s.source_files  = "Persistent/**/*.{h,m,swift}"
-  s.exclude_files = "Persistent/CoreData"
+  #s.exclude_files = "Persistent/CoreData"
 
   # s.public_header_files = "Classes/**/*.h"
 
