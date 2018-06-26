@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14135" systemVersion="17F77" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="BCHTransactionModel" representedClassName="BCHTransactionModel" parentEntity="BTCTransactionModel" syncable="YES" codeGenerationType="class"/>
+    <entity name="BitcoinWalletModel" representedClassName="BitcoinWalletModel" syncable="YES" codeGenerationType="class">
+        <attribute name="isGeneratingAddresses" optional="YES" transient="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="lastAddressIndex" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="lastChangeAddressIndex" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="needLoadServer" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="satoshi" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="unconfirmSatoshi" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="version" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="addresses" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="BTCWalletAddressModel" syncable="YES"/>
+        <relationship name="changeAddresses" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="BTCWalletAddressModel" syncable="YES"/>
+        <relationship name="transactions" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="BTCTransactionModel" inverseName="wallet" inverseEntity="BTCTransactionModel" syncable="YES"/>
+        <relationship name="wallet" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="WalletModel" inverseName="bitcoinWallet" inverseEntity="WalletModel" syncable="YES"/>
+    </entity>
+    <entity name="BTCTransactionModel" representedClassName="BTCTransactionModel" parentEntity="TransactionModel" syncable="YES" codeGenerationType="class">
+        <attribute name="inSatoshi" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="outSatoshi" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="targetSatoshi" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="inputs" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="BTCTXAddressModel" syncable="YES"/>
+        <relationship name="outputs" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="BTCTXAddressModel" syncable="YES"/>
+        <relationship name="targets" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="BTCTXAddressModel" syncable="YES"/>
+        <relationship name="wallet" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="BitcoinWalletModel" inverseName="transactions" inverseEntity="BitcoinWalletModel" syncable="YES"/>
+    </entity>
+    <entity name="BTCTXAddressModel" representedClassName="BTCTXAddressModel" syncable="YES" codeGenerationType="class">
+        <attribute name="address" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="index" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="satoshi" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="txHash" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="BTCWalletAddressModel" representedClassName="BTCWalletAddressModel" syncable="YES" codeGenerationType="class">
+        <attribute name="address" attributeType="String" syncable="YES"/>
+        <attribute name="index" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="isUsed" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="satoshi" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="wallet" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="BitcoinWalletModel" syncable="YES"/>
+    </entity>
+    <entity name="CoinModel" representedClassName="CoinModel" syncable="YES" codeGenerationType="class">
+        <attribute name="coinTypeRawValue" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="confirmedBalance" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="decimals" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="expireDate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="icon" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="index" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="isHidden" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name_cn" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name_en" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name_ja" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name_ko" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name_ru" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name_zh_ft" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="symbol" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="unconfirmedBalance" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="usdtRate" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
+    </entity>
+    <entity name="ContactModel" representedClassName="ContactModel" syncable="YES" codeGenerationType="class">
+        <attribute name="additionTypeRawValue" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="address" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="coinTypeRawValue" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="name" attributeType="String" syncable="YES"/>
+        <attribute name="remark" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="walletID" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="EOSMappingModel" representedClassName="EOSMappingModel" syncable="YES" codeGenerationType="class">
+        <attribute name="privateKey" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="publicKey" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="ethWallet" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="EthereumWalletModel" inverseName="eosMapping" inverseEntity="EthereumWalletModel" syncable="YES"/>
+        <relationship name="mappingTransaction" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ETHTransactionModel" syncable="YES"/>
+    </entity>
+    <entity name="ERC20Token" representedClassName="ERC20Token" syncable="YES" codeGenerationType="class">
+        <attribute name="balance" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
+        <relationship name="coin" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ETHCoinModel" syncable="YES"/>
+        <relationship name="ethWallet" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="EthereumWalletModel" inverseName="erc20Tokens" inverseEntity="EthereumWalletModel" syncable="YES"/>
+    </entity>
+    <entity name="ETHCoinModel" representedClassName="ETHCoinModel" parentEntity="CoinModel" syncable="YES" codeGenerationType="class">
+        <attribute name="contractAddress" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="EthereumWalletModel" representedClassName="EthereumWalletModel" syncable="YES" codeGenerationType="class">
+        <attribute name="address" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="needLoadServer" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="publicKey" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="version" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="wei" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
+        <relationship name="coin" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CoinModel" syncable="YES"/>
+        <relationship name="eosMapping" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="EOSMappingModel" inverseName="ethWallet" inverseEntity="EOSMappingModel" syncable="YES"/>
+        <relationship name="erc20Tokens" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ERC20Token" inverseName="ethWallet" inverseEntity="ERC20Token" syncable="YES"/>
+        <relationship name="transactions" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="ETHTransactionModel" inverseName="ethWallet" inverseEntity="ETHTransactionModel" syncable="YES"/>
+        <relationship name="wallet" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="WalletModel" inverseName="ethereumWallet" inverseEntity="WalletModel" syncable="YES"/>
+    </entity>
+    <entity name="ETHTransactionModel" representedClassName="ETHTransactionModel" parentEntity="TransactionModel" syncable="YES" codeGenerationType="class">
+        <attribute name="amount" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="fromAddress" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="gas" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="gasLimit" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="gasPrice" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="nonce" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="receiveAddress" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="toAddress" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="ethWallet" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="EthereumWalletModel" inverseName="transactions" inverseEntity="EthereumWalletModel" syncable="YES"/>
+    </entity>
+    <entity name="PrivateKeyWalletModel" representedClassName="PrivateKeyWalletModel" parentEntity="WalletModel" syncable="YES" codeGenerationType="class">
+        <attribute name="btcPublicKey" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="encryptedPrivateKey" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="privateKeyHash" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="ServerMessageModel" representedClassName="ServerMessageModel" syncable="YES" codeGenerationType="class">
+        <attribute name="amount" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="createDate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="isImportant" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="linkURLRawValue" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="messageSymbol" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="messageTypeRawValue" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="picURLRawValue" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="serverID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="statusRawValue" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="symbol" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="textRawValue" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="timestamp" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="titleRawValue" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="tokenDecimals" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="txHash" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="typeRawValue" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="updateDate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <relationship name="wallet" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="WalletModel" inverseName="messages" inverseEntity="WalletModel" syncable="YES"/>
+    </entity>
+    <entity name="TransactionModel" representedClassName="TransactionModel" syncable="YES" codeGenerationType="class">
+        <attribute name="createdDate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="height" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="receiveContactID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="remark" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="sendContactID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="serverID" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="statusRawValue" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="txHash" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="typeRawValue" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="coin" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CoinModel" syncable="YES"/>
+    </entity>
+    <entity name="WalletModel" representedClassName="WalletModel" syncable="YES" codeGenerationType="class">
+        <attribute name="changeExtPublicKey" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="createDate" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="encryptedMnemonic" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="encryptedSeed" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="id" attributeType="String" syncable="YES"/>
+        <attribute name="isNeedBackup" optional="YES" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="mainExtPublicKey" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="mnemonicHash" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="seedHash" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="bitcoinWallet" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="BitcoinWalletModel" inverseName="wallet" inverseEntity="BitcoinWalletModel" syncable="YES"/>
+        <relationship name="ethereumWallet" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="EthereumWalletModel" inverseName="wallet" inverseEntity="EthereumWalletModel" syncable="YES"/>
+        <relationship name="messages" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ServerMessageModel" inverseName="wallet" inverseEntity="ServerMessageModel" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="BCHTransactionModel" positionX="126" positionY="-216" width="128" height="45"/>
+        <element name="BitcoinWalletModel" positionX="-90" positionY="-342" width="126" height="210"/>
+        <element name="BTCTransactionModel" positionX="126" positionY="-411" width="128" height="150"/>
+        <element name="BTCTXAddressModel" positionX="306" positionY="-360" width="128" height="105"/>
+        <element name="BTCWalletAddressModel" positionX="72" positionY="9" width="128" height="120"/>
+        <element name="CoinModel" positionX="-324" positionY="-844" width="128" height="298"/>
+        <element name="ContactModel" positionX="-335" positionY="-45" width="128" height="133"/>
+        <element name="EOSMappingModel" positionX="126" positionY="-774" width="128" height="103"/>
+        <element name="ERC20Token" positionX="124" positionY="-892" width="137" height="88"/>
+        <element name="ETHCoinModel" positionX="-90" positionY="-891" width="126" height="58"/>
+        <element name="EthereumWalletModel" positionX="-90" positionY="-637" width="126" height="193"/>
+        <element name="ETHTransactionModel" positionX="126" positionY="-648" width="128" height="178"/>
+        <element name="PrivateKeyWalletModel" positionX="-333" positionY="-189" width="128" height="88"/>
+        <element name="ServerMessageModel" positionX="-164" positionY="126" width="128" height="315"/>
+        <element name="TransactionModel" positionX="313" positionY="-616" width="128" height="193"/>
+        <element name="WalletModel" positionX="-324" positionY="-525" width="128" height="225"/>
+    </elements>
+</model>
