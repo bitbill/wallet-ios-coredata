@@ -9,6 +9,6 @@
 import UIKit
 import CoreData
 
-class BBFetchRequest : NSFetchRequest<NSFetchRequestResult> {}
+open class BBFetchRequest : NSFetchRequest<NSFetchRequestResult> {}
 
 extension BBFetchRequest : FetchRequest {}
