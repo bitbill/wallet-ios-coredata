@@ -134,6 +134,7 @@
 			children = (
 				98418BFB20E21F800002CDCF /* Persistent */,
 				98367D9520D2220100076C28 /* AppDelegate.swift */,
+				98418C0320E21FA80002CDCF /* ModelManager.swift */,
 				98367D9720D2220100076C28 /* ViewController.swift */,
 				9800945A20D8FCE000CD9CD1 /* BookView.swift */,
 				9800945C20D8FCF700CD9CD1 /* AuthorButton.swift */,
@@ -182,7 +183,6 @@
 		98418BFE20E21F800002CDCF /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
-				98418C0320E21FA80002CDCF /* ModelManager.swift */,
 				98418C0420E21FA80002CDCF /* NSManagedObjectContext.swift */,
 			);
 			path = CoreData;
