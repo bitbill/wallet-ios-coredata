@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "BitRecord"
-  s.version      = "0.0.3"
+  s.version      = "1.0.0"
   s.summary      = "BitRecord"
 
   # This description is used to generate tags and improve search results.
@@ -92,7 +92,7 @@ Pod::Spec.new do |s|
   #
 
   s.source_files  = "Persistent/**/*.{h,m,swift}"
-  s.exclude_files = "Persistent/CoreData"
+  #s.exclude_files = "Persistent/CoreData"
 
   # s.public_header_files = "Classes/**/*.h"
 

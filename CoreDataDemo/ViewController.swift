@@ -41,7 +41,7 @@ class ViewController: UIViewController {
         totalC = Int(self.totalCount.text!)
         threadC = Int(self.threadCount.text!)
         insertCPerThread = Int(self.insertCountPerThread.text!)
-        let manager = ModelManager()
+        let manager = ModelManager(main: false)
         for _ in 0..<threadC {
             manager.perform({ (context, save) in
                 for _ in 0..<self.insertCPerThread {

@@ -16,7 +16,6 @@
 		98367D9620D2220100076C28 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98367D9520D2220100076C28 /* AppDelegate.swift */; };
 		98367D9820D2220100076C28 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98367D9720D2220100076C28 /* ViewController.swift */; };
 		98367D9B20D2220100076C28 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 98367D9920D2220100076C28 /* Main.storyboard */; };
-		98367D9E20D2220100076C28 /* CoreDataDemo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 98367D9C20D2220100076C28 /* CoreDataDemo.xcdatamodeld */; };
 		98367DA020D2220200076C28 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 98367D9F20D2220200076C28 /* Assets.xcassets */; };
 		98367DA320D2220200076C28 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 98367DA120D2220200076C28 /* LaunchScreen.storyboard */; };
 		98367DAE20D2220200076C28 /* CoreDataDemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98367DAD20D2220200076C28 /* CoreDataDemoTests.swift */; };
@@ -28,6 +27,8 @@
 		98418C0520E21FA90002CDCF /* ModelManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98418C0320E21FA80002CDCF /* ModelManager.swift */; };
 		98418C0620E21FA90002CDCF /* NSManagedObjectContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98418C0420E21FA80002CDCF /* NSManagedObjectContext.swift */; };
 		98418C0820E21FBF0002CDCF /* Context.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98418C0720E21FBE0002CDCF /* Context.swift */; };
+		985D4E2C20E33706007D2433 /* CoreDataDemo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 985D4E2A20E33706007D2433 /* CoreDataDemo.xcdatamodeld */; };
+		985D4E3220E377F0007D2433 /* BBFetchRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 985D4E3120E377F0007D2433 /* BBFetchRequest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,7 +59,6 @@
 		98367D9520D2220100076C28 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		98367D9720D2220100076C28 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		98367D9A20D2220100076C28 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		98367D9D20D2220100076C28 /* CoreDataDemo.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataDemo.xcdatamodel; sourceTree = "<group>"; };
 		98367D9F20D2220200076C28 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		98367DA220D2220200076C28 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		98367DA420D2220200076C28 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -75,6 +75,8 @@
 		98418C0320E21FA80002CDCF /* ModelManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelManager.swift; sourceTree = "<group>"; };
 		98418C0420E21FA80002CDCF /* NSManagedObjectContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSManagedObjectContext.swift; sourceTree = "<group>"; };
 		98418C0720E21FBE0002CDCF /* Context.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Context.swift; sourceTree = "<group>"; };
+		985D4E2B20E33706007D2433 /* CoreDataDemo.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataDemo.xcdatamodel; sourceTree = "<group>"; };
+		985D4E3120E377F0007D2433 /* BBFetchRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BBFetchRequest.swift; sourceTree = "<group>"; };
 		98F7AAC720D9FB8B00647598 /* CoreDataDemo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CoreDataDemo-Bridging-Header.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -140,7 +142,7 @@
 				98367D9F20D2220200076C28 /* Assets.xcassets */,
 				98367DA120D2220200076C28 /* LaunchScreen.storyboard */,
 				98367DA420D2220200076C28 /* Info.plist */,
-				98367D9C20D2220100076C28 /* CoreDataDemo.xcdatamodeld */,
+				985D4E2A20E33706007D2433 /* CoreDataDemo.xcdatamodeld */,
 				98418BF920E202D00002CDCF /* WalletModel2_eth.xcdatamodel */,
 			);
 			path = CoreDataDemo;
@@ -172,6 +174,7 @@
 				98418C0720E21FBE0002CDCF /* Context.swift */,
 				98418BFD20E21F800002CDCF /* Entity.swift */,
 				98418BFF20E21F800002CDCF /* Procedure.swift */,
+				985D4E3120E377F0007D2433 /* BBFetchRequest.swift */,
 			);
 			path = Persistent;
 			sourceTree = SOURCE_ROOT;
@@ -322,14 +325,15 @@
 				98367D9820D2220100076C28 /* ViewController.swift in Sources */,
 				98418C0520E21FA90002CDCF /* ModelManager.swift in Sources */,
 				98418C0620E21FA90002CDCF /* NSManagedObjectContext.swift in Sources */,
+				985D4E2C20E33706007D2433 /* CoreDataDemo.xcdatamodeld in Sources */,
 				9800945920D8F49E00CD9CD1 /* Author+CoreDataProperties.swift in Sources */,
-				98367D9E20D2220100076C28 /* CoreDataDemo.xcdatamodeld in Sources */,
 				9800945D20D8FCF700CD9CD1 /* AuthorButton.swift in Sources */,
 				9800945820D8F49E00CD9CD1 /* Author+CoreDataClass.swift in Sources */,
 				98418BFA20E202D00002CDCF /* WalletModel2_eth.xcdatamodel in Sources */,
 				98418C0120E21F800002CDCF /* Entity.swift in Sources */,
 				9800945620D8F49E00CD9CD1 /* Book+CoreDataClass.swift in Sources */,
 				98418C0220E21F800002CDCF /* Procedure.swift in Sources */,
+				985D4E3220E377F0007D2433 /* BBFetchRequest.swift in Sources */,
 				98418C0820E21FBF0002CDCF /* Context.swift in Sources */,
 				9800945720D8F49E00CD9CD1 /* Book+CoreDataProperties.swift in Sources */,
 				98367D9620D2220100076C28 /* AppDelegate.swift in Sources */,
@@ -509,7 +513,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = QCBMU7LNDS;
 				INFOPLIST_FILE = CoreDataDemo/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -532,7 +536,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = QCBMU7LNDS;
 				INFOPLIST_FILE = CoreDataDemo/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -666,12 +670,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		98367D9C20D2220100076C28 /* CoreDataDemo.xcdatamodeld */ = {
+		985D4E2A20E33706007D2433 /* CoreDataDemo.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				98367D9D20D2220100076C28 /* CoreDataDemo.xcdatamodel */,
+				985D4E2B20E33706007D2433 /* CoreDataDemo.xcdatamodel */,
 			);
-			currentVersion = 98367D9D20D2220100076C28 /* CoreDataDemo.xcdatamodel */;
+			currentVersion = 985D4E2B20E33706007D2433 /* CoreDataDemo.xcdatamodel */;
 			path = CoreDataDemo.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

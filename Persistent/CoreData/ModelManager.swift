@@ -8,19 +8,15 @@
 
 import UIKit
 import CoreData
-var g_persistentStoreCoordinator : NSPersistentStoreCoordinator!
 
 class ModelManager: NSObject, Procedure {
     
-    open static let sharedManager = ModelManager.init(main:true)
-    var context: Context!
-    
-    public func removeStore() throws {
-        try FileManager.default.removeItem(at: URL(fileURLWithPath:ModelManager.sqliteFilePath()) as URL)
-        _ = try? FileManager.default.removeItem(atPath: "\(ModelManager.sqliteFilePath())-shm")
-        _ = try? FileManager.default.removeItem(atPath: "\(ModelManager.sqliteFilePath())-wal")
+    func removeStore() throws {
         
     }
+    open static let sharedManager = ModelManager(main:true)
+    var container : NSPersistentContainer =  (UIApplication.shared.delegate as! AppDelegate).persistentContainer
+    var context: Context!
     
     func perform(_ operation: @escaping (_ context: Context, _ save: @escaping () -> Void) -> (), completion: @escaping (Error?) -> ()) {
         let context: NSManagedObjectContext = self.context as! NSManagedObjectContext
@@ -92,6 +88,16 @@ class ModelManager: NSObject, Procedure {
         
         return returnedObject
     }
+    
+    init(main : Bool) {
+        if main {
+            self.context = self.container.viewContext
+        } else {
+            let privateContext : NSManagedObjectContext = NSManagedObjectContext.init(concurrencyType: .privateQueueConcurrencyType)
+            privateContext.parent = self.container.viewContext
+            self.context = privateContext
+        }
+    }
 
     //MARK: handler
     // Insert a new NSManagedObject, it's all property is nil
@@ -113,64 +119,5 @@ class ModelManager: NSObject, Procedure {
     open func delete(_ object: NSManagedObject) {
         let c = self.context as! NSManagedObjectContext
         c.delete(object)
-    }
-
-    //MARK: init
-    
-    public init(main : Bool) {
-        let mainContext : NSManagedObjectContext = NSManagedObjectContext.init(concurrencyType: .mainQueueConcurrencyType)
-        let coordinator = ModelManager.persistentStoreCoordinator()
-        mainContext.persistentStoreCoordinator = coordinator
-        mainContext.undoManager = nil;
-        let policy : NSMergePolicy = NSMergePolicy.init(merge: NSMergePolicyType.mergeByPropertyStoreTrumpMergePolicyType)
-        mainContext.mergePolicy = policy
-        self.context = mainContext
-    }
-    
-    public override init() {
-        let privateContext : NSManagedObjectContext = NSManagedObjectContext.init(concurrencyType: .privateQueueConcurrencyType)
-        privateContext.parent = ModelManager.sharedManager.context as? NSManagedObjectContext
-        self.context = privateContext
-    }
-    
-    open class func managedObjectModel() -> NSManagedObjectModel {
-        let bundlePath : String = Bundle.main.bundlePath
-        let modelFolder : String = bundlePath + "/CoreDataDemo.momd"
-        var modelFile : String = modelFolder + "/CoreDataDemo.mom"
-        let fileManager = FileManager.default
-        if !fileManager.fileExists(atPath: modelFile) {
-            modelFile = bundlePath + "/CoreDataDemo.mom"
-            if !fileManager.fileExists(atPath: modelFile) {
-                assertionFailure("I can not find model file");
-            }
-        }
-        let managedObjectModel : NSManagedObjectModel = NSManagedObjectModel.init(contentsOf: NSURL.fileURL(withPath: modelFile))!
-        return managedObjectModel
-    }
-    
-    open class func persistentStoreCoordinator() -> NSPersistentStoreCoordinator {
-        if g_persistentStoreCoordinator == nil {
-            g_persistentStoreCoordinator = NSPersistentStoreCoordinator.init(managedObjectModel: self.managedObjectModel())
-            let options = [NSInferMappingModelAutomaticallyOption : true, NSMigratePersistentStoresAutomaticallyOption : true]
-            do {
-                try g_persistentStoreCoordinator.addPersistentStore(ofType: NSSQLiteStoreType, configurationName: nil, at: URL.init(fileURLWithPath: self.sqliteFilePath()) , options: options)
-            } catch {
-                print(error)
-                print(error.localizedDescription)
-                let fm = FileManager.default
-                if fm.fileExists(atPath: self.sqliteFilePath()) {
-                    try? fm.removeItem(atPath: self.sqliteFilePath())
-                }
-            }
-        }
-        return g_persistentStoreCoordinator;
-    }
-    
-    
-    
-    class func sqliteFilePath() -> String {
-        let libraryPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
-        return libraryPath + "CoreDatafv.sqlite"
-        
     }
 }

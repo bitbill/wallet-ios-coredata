@@ -18,6 +18,7 @@ public protocol FetchRequest {
     
     func filtered(with key: String, notIn value: [String]) -> FetchRequest
     
+    func filtered(with key: String, contains value: [String]) -> FetchRequest
     
     func sorted(with sortDescriptor: NSSortDescriptor) -> FetchRequest
     
@@ -57,6 +58,10 @@ public extension FetchRequest where Self:NSFetchRequest<NSFetchRequestResult> {
             .request(withPredicate: NSPredicate(format: "NOT (\(key) IN %@)", value))
     }
     
+    func filtered(with key: String, contains value: [String]) -> FetchRequest {
+        return self
+            .request(withPredicate: NSPredicate(format: "\(key) CONTAINS[c] %@", value))
+    }
     
     public func sorted(with sortDescriptor: NSSortDescriptor) -> FetchRequest {
         return self
@@ -90,7 +95,5 @@ public extension FetchRequest where Self:NSFetchRequest<NSFetchRequestResult> {
 }
 
 
-class BBFetchRequest : NSFetchRequest<NSFetchRequestResult> {}
 
-extension BBFetchRequest : FetchRequest {}
 
