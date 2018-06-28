@@ -15,25 +15,26 @@ public indirect enum StorageError: Error {
 
 extension NSManagedObjectContext: ContextProtocol {
     
-    public func fetch<T>(_ fetchRequest: FetchRequestProtocol) throws -> [T] where T : EntityProtocol {
-        guard let entity = T.self as? NSManagedObject.Type else { throw StorageError.invalidType }
+    public func fetchModel<T>(_ fetchRequest: FetchRequestProtocol) -> [T] where T : EntityProtocol {
+        guard let entity = T.self as? NSManagedObject.Type else { fatalError("fetch is not NSManagedObject") }
         let request : BILFetchRequest = fetchRequest as! BILFetchRequest
         request.entity = NSEntityDescription.entity(forEntityName: entity.entityName, in: self)
-        let results = try self.fetch(request)
-        let typedResults = results.map {$0 as! T}
-        return typedResults
+        do {
+            let results = try self.fetch(request)
+            let typedResults = results.map {$0 as! T}
+            return typedResults
+        } catch {
+            return []
+        }
     }
-    
-    public func insert<T: EntityProtocol>(_ entity: T) throws {}
-    
-    public func new<T: EntityProtocol>() throws -> T {
-        guard let entity = T.self as? NSManagedObject.Type else { throw StorageError.invalidType }
+
+    public func newModel<T: EntityProtocol>() -> T {
+        guard let entity = T.self as? NSManagedObject.Type else { fatalError("newModel is not NSManagedObject") }
         let object = NSEntityDescription.insertNewObject(forEntityName: entity.entityName, into: self)
         if let inserted = object as? T {
             return inserted
-        }
-        else {
-            throw StorageError.invalidType
+        } else {
+            fatalError("newModel insert type is not \(entity.entityName)")
         }
     }
     
@@ -52,5 +53,6 @@ extension NSManagedObjectContext: ContextProtocol {
     public func removeAll() throws {
         throw StorageError.invalidOperation("-removeAll not available in NSManagedObjectContext. Remove the store instead")
     }
+
     
 }

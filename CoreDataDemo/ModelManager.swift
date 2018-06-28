@@ -120,4 +120,5 @@ class ModelManager: NSObject, ModelManagerProtocol {
         let c = self.context as! NSManagedObjectContext
         c.delete(object)
     }
+    
 }

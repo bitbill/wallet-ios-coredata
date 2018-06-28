@@ -47,18 +47,18 @@ class ViewController: UIViewController {
                 for _ in 0..<self.insertCPerThread {
                     do {
                         let bookId = Int32(Int(arc4random()) % self.totalC)
-                        var book : Book? = try context.fetch(BILFetchRequest().filtered(with: "bookId", equalTo: "\(bookId)")).first
+                        var book : Book? = context.fetchModel(BILFetchRequest().filtered(with: "bookId", equalTo: "\(bookId)")).first
                         if book == nil {
-                            book = try context.new()
+                            book = try context.newModel()
                         }
                         book?.imageURL = self.imageURLArray()[Int(arc4random()%10)]
                         book?.bookName = self.randomStringWith(5).capitalized
                         book?.bookId = bookId
                         
                         let authorId = Int32(arc4random() % 4)
-                        var author : Author? = try context.fetch(BILFetchRequest().filtered(with: "authorId", equalTo: "\(authorId)")).first
+                        var author : Author? = context.fetchModel(BILFetchRequest().filtered(with: "authorId", equalTo: "\(authorId)")).first
                         if author == nil {
-                            author = try context.new()
+                            author = try context.newModel()
                         }
                         author?.authorId = authorId
                         author?.authorName = self.authorName()[Int(authorId)]
@@ -107,12 +107,12 @@ class ViewController: UIViewController {
     
     @IBAction func clean(_ sender: Any)
     {
-        let authors : [Author] = try! ModelManager.sharedManager.context.fetch(BILFetchRequest())
+        let authors : [Author] = ModelManager.sharedManager.context.fetchModel(BILFetchRequest())
         for author in authors  {
             ModelManager.sharedManager.delete(author)
         }
         
-        let books : [Book] = try! ModelManager.sharedManager.context.fetch(BILFetchRequest())
+        let books : [Book] = ModelManager.sharedManager.context.fetchModel(BILFetchRequest())
         for book in books  {
             ModelManager.sharedManager.delete(book)
         }
@@ -155,7 +155,7 @@ class ViewController: UIViewController {
     }
     
     func showAllBooks() {
-        let allBooks : [Book] = try! ModelManager.sharedManager.context.fetch(BILFetchRequest())
+        let allBooks : [Book] = ModelManager.sharedManager.context.fetchModel(BILFetchRequest())
         let width = UIScreen.main.bounds.size.width/3 - 27
         let height = width * 1.5
         for i in 0..<allBooks.count {
@@ -169,7 +169,7 @@ class ViewController: UIViewController {
     }
     
     func showAllAuthors() {
-        let allAuthors : [Author] = try! ModelManager.sharedManager.context.fetch(BILFetchRequest())
+        let allAuthors : [Author] = ModelManager.sharedManager.context.fetchModel(BILFetchRequest())
         let width = UIScreen.main.bounds.size.width/3 - 27
         let height = width * 1.5
         for i in 0..<allAuthors.count {
