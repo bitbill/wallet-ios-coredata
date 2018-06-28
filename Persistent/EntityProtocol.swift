@@ -8,11 +8,11 @@
 
 import UIKit
 import CoreData
-public protocol Entity {
+public protocol EntityProtocol {
     
 }
 
-extension NSManagedObject: Entity {}
+extension NSManagedObject: EntityProtocol {}
 
 extension NSManagedObject {
     

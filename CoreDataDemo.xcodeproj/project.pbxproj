@@ -21,14 +21,14 @@
 		98367DAE20D2220200076C28 /* CoreDataDemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98367DAD20D2220200076C28 /* CoreDataDemoTests.swift */; };
 		98367DB920D2220200076C28 /* CoreDataDemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98367DB820D2220200076C28 /* CoreDataDemoUITests.swift */; };
 		98418BFA20E202D00002CDCF /* WalletModel2_eth.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = 98418BF920E202D00002CDCF /* WalletModel2_eth.xcdatamodel */; };
-		98418C0020E21F800002CDCF /* FetchRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98418BFC20E21F800002CDCF /* FetchRequest.swift */; };
-		98418C0120E21F800002CDCF /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98418BFD20E21F800002CDCF /* Entity.swift */; };
-		98418C0220E21F800002CDCF /* Procedure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98418BFF20E21F800002CDCF /* Procedure.swift */; };
+		98418C0020E21F800002CDCF /* FetchRequestProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98418BFC20E21F800002CDCF /* FetchRequestProtocol.swift */; };
+		98418C0120E21F800002CDCF /* EntityProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98418BFD20E21F800002CDCF /* EntityProtocol.swift */; };
+		98418C0220E21F800002CDCF /* ModelManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98418BFF20E21F800002CDCF /* ModelManagerProtocol.swift */; };
 		98418C0520E21FA90002CDCF /* ModelManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98418C0320E21FA80002CDCF /* ModelManager.swift */; };
 		98418C0620E21FA90002CDCF /* NSManagedObjectContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98418C0420E21FA80002CDCF /* NSManagedObjectContext.swift */; };
-		98418C0820E21FBF0002CDCF /* Context.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98418C0720E21FBE0002CDCF /* Context.swift */; };
+		98418C0820E21FBF0002CDCF /* ContextProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98418C0720E21FBE0002CDCF /* ContextProtocol.swift */; };
 		985D4E2C20E33706007D2433 /* CoreDataDemo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 985D4E2A20E33706007D2433 /* CoreDataDemo.xcdatamodeld */; };
-		985D4E3220E377F0007D2433 /* BBFetchRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 985D4E3120E377F0007D2433 /* BBFetchRequest.swift */; };
+		985D4E3220E377F0007D2433 /* BILFetchRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 985D4E3120E377F0007D2433 /* BILFetchRequest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,14 +69,14 @@
 		98367DB820D2220200076C28 /* CoreDataDemoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataDemoUITests.swift; sourceTree = "<group>"; };
 		98367DBA20D2220200076C28 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		98418BF920E202D00002CDCF /* WalletModel2_eth.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WalletModel2_eth.xcdatamodel; sourceTree = "<group>"; };
-		98418BFC20E21F800002CDCF /* FetchRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchRequest.swift; sourceTree = "<group>"; };
-		98418BFD20E21F800002CDCF /* Entity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Entity.swift; sourceTree = "<group>"; };
-		98418BFF20E21F800002CDCF /* Procedure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Procedure.swift; sourceTree = "<group>"; };
+		98418BFC20E21F800002CDCF /* FetchRequestProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchRequestProtocol.swift; sourceTree = "<group>"; };
+		98418BFD20E21F800002CDCF /* EntityProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntityProtocol.swift; sourceTree = "<group>"; };
+		98418BFF20E21F800002CDCF /* ModelManagerProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelManagerProtocol.swift; sourceTree = "<group>"; };
 		98418C0320E21FA80002CDCF /* ModelManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelManager.swift; sourceTree = "<group>"; };
 		98418C0420E21FA80002CDCF /* NSManagedObjectContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSManagedObjectContext.swift; sourceTree = "<group>"; };
-		98418C0720E21FBE0002CDCF /* Context.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Context.swift; sourceTree = "<group>"; };
+		98418C0720E21FBE0002CDCF /* ContextProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContextProtocol.swift; sourceTree = "<group>"; };
 		985D4E2B20E33706007D2433 /* CoreDataDemo.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataDemo.xcdatamodel; sourceTree = "<group>"; };
-		985D4E3120E377F0007D2433 /* BBFetchRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BBFetchRequest.swift; sourceTree = "<group>"; };
+		985D4E3120E377F0007D2433 /* BILFetchRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BILFetchRequest.swift; sourceTree = "<group>"; };
 		98F7AAC720D9FB8B00647598 /* CoreDataDemo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CoreDataDemo-Bridging-Header.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -171,11 +171,11 @@
 			isa = PBXGroup;
 			children = (
 				98418BFE20E21F800002CDCF /* CoreData */,
-				98418BFC20E21F800002CDCF /* FetchRequest.swift */,
-				98418C0720E21FBE0002CDCF /* Context.swift */,
-				98418BFD20E21F800002CDCF /* Entity.swift */,
-				98418BFF20E21F800002CDCF /* Procedure.swift */,
-				985D4E3120E377F0007D2433 /* BBFetchRequest.swift */,
+				98418BFC20E21F800002CDCF /* FetchRequestProtocol.swift */,
+				98418C0720E21FBE0002CDCF /* ContextProtocol.swift */,
+				98418BFD20E21F800002CDCF /* EntityProtocol.swift */,
+				98418BFF20E21F800002CDCF /* ModelManagerProtocol.swift */,
+				985D4E3120E377F0007D2433 /* BILFetchRequest.swift */,
 			);
 			path = Persistent;
 			sourceTree = SOURCE_ROOT;
@@ -320,7 +320,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				98418C0020E21F800002CDCF /* FetchRequest.swift in Sources */,
+				98418C0020E21F800002CDCF /* FetchRequestProtocol.swift in Sources */,
 				9800945B20D8FCE000CD9CD1 /* BookView.swift in Sources */,
 				98367D9820D2220100076C28 /* ViewController.swift in Sources */,
 				98418C0520E21FA90002CDCF /* ModelManager.swift in Sources */,
@@ -330,11 +330,11 @@
 				9800945D20D8FCF700CD9CD1 /* AuthorButton.swift in Sources */,
 				9800945820D8F49E00CD9CD1 /* Author+CoreDataClass.swift in Sources */,
 				98418BFA20E202D00002CDCF /* WalletModel2_eth.xcdatamodel in Sources */,
-				98418C0120E21F800002CDCF /* Entity.swift in Sources */,
+				98418C0120E21F800002CDCF /* EntityProtocol.swift in Sources */,
 				9800945620D8F49E00CD9CD1 /* Book+CoreDataClass.swift in Sources */,
-				98418C0220E21F800002CDCF /* Procedure.swift in Sources */,
-				985D4E3220E377F0007D2433 /* BBFetchRequest.swift in Sources */,
-				98418C0820E21FBF0002CDCF /* Context.swift in Sources */,
+				98418C0220E21F800002CDCF /* ModelManagerProtocol.swift in Sources */,
+				985D4E3220E377F0007D2433 /* BILFetchRequest.swift in Sources */,
+				98418C0820E21FBF0002CDCF /* ContextProtocol.swift in Sources */,
 				9800945720D8F49E00CD9CD1 /* Book+CoreDataProperties.swift in Sources */,
 				98367D9620D2220100076C28 /* AppDelegate.swift in Sources */,
 			);

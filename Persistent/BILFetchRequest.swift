@@ -1,5 +1,5 @@
 //
-//  BBFetchRequest.swift
+//  BILFetchRequest.swift
 //  CoreDataDemo
 //
 //  Created by BitBill on 2018/6/27.
@@ -9,6 +9,6 @@
 import UIKit
 import CoreData
 
-open class BBFetchRequest : NSFetchRequest<NSFetchRequestResult> {}
+open class BILFetchRequest : NSFetchRequest<NSFetchRequestResult> {}
 
-extension BBFetchRequest : FetchRequest {}
+extension BILFetchRequest : FetchRequestProtocol {}

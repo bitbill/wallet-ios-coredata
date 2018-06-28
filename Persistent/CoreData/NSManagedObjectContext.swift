@@ -13,20 +13,20 @@ public indirect enum StorageError: Error {
 }
 // MARK: - NSManagedObjectContext Extension (Context)
 
-extension NSManagedObjectContext: Context {
+extension NSManagedObjectContext: ContextProtocol {
     
-    public func fetch<T>(_ fetchRequest: FetchRequest) throws -> [T] where T : Entity {
+    public func fetch<T>(_ fetchRequest: FetchRequestProtocol) throws -> [T] where T : EntityProtocol {
         guard let entity = T.self as? NSManagedObject.Type else { throw StorageError.invalidType }
-        let request : BBFetchRequest = fetchRequest as! BBFetchRequest
+        let request : BILFetchRequest = fetchRequest as! BILFetchRequest
         request.entity = NSEntityDescription.entity(forEntityName: entity.entityName, in: self)
-        let results = try self.fetch(fetchRequest as! BBFetchRequest)
+        let results = try self.fetch(request)
         let typedResults = results.map {$0 as! T}
         return typedResults
     }
     
-    public func insert<T: Entity>(_ entity: T) throws {}
+    public func insert<T: EntityProtocol>(_ entity: T) throws {}
     
-    public func new<T: Entity>() throws -> T {
+    public func new<T: EntityProtocol>() throws -> T {
         guard let entity = T.self as? NSManagedObject.Type else { throw StorageError.invalidType }
         let object = NSEntityDescription.insertNewObject(forEntityName: entity.entityName, into: self)
         if let inserted = object as? T {
@@ -37,11 +37,16 @@ extension NSManagedObjectContext: Context {
         }
     }
     
-    public func remove<T: Entity>(_ objects: [T]) throws {
+    public func remove<T: EntityProtocol>(_ objects: [T]) throws {
         for object in objects {
             guard let object = object as? NSManagedObject else { continue }
             self.delete(object)
         }
+    }
+    
+    public func remove<T: EntityProtocol>(_ object: T) throws {
+        guard let object = object as? NSManagedObject else { return }
+        self.delete(object)
     }
     
     public func removeAll() throws {

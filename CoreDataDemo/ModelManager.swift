@@ -9,16 +9,16 @@
 import UIKit
 import CoreData
 
-class ModelManager: NSObject, Procedure {
+class ModelManager: NSObject, ModelManagerProtocol {
     
     func removeStore() throws {
         
     }
     open static let sharedManager = ModelManager(main:true)
     var container : NSPersistentContainer =  (UIApplication.shared.delegate as! AppDelegate).persistentContainer
-    var context: Context!
+    var context: ContextProtocol!
     
-    func perform(_ operation: @escaping (_ context: Context, _ save: @escaping () -> Void) -> (), completion: @escaping (Error?) -> ()) {
+    func perform(_ operation: @escaping (_ context: ContextProtocol, _ save: @escaping () -> Void) -> (), completion: @escaping (Error?) -> ()) {
         let context: NSManagedObjectContext = self.context as! NSManagedObjectContext
         var _error: Error!
         context.perform {
@@ -50,7 +50,7 @@ class ModelManager: NSObject, Procedure {
         }
     }
     
-    public func performAndWait<T>(_ operation: @escaping (_ context: Context, _ save: @escaping () -> Void) throws -> T) throws -> T  {
+    public func performAndWait<T>(_ operation: @escaping (_ context: ContextProtocol, _ save: @escaping () -> Void) throws -> T) throws -> T  {
         let context: NSManagedObjectContext = self.context as! NSManagedObjectContext
         var _error: Error!
         
