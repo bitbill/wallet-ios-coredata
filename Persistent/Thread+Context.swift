@@ -13,7 +13,7 @@ var contextKey = "contextKey"
 
 extension Thread {
     
-    var context: NSManagedObjectContext? {
+    open var context: NSManagedObjectContext? {
         get {
             guard let ct = objc_getAssociatedObject(self, &contextKey) as? NSManagedObjectContext else { return nil }
             return ct
