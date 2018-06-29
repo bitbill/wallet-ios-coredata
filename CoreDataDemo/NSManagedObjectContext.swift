@@ -27,7 +27,7 @@ extension NSManagedObjectContext: ContextProtocol {
             return []
         }
     }
-
+    
     public func newModel<T: EntityProtocol>() -> T {
         guard let entity = T.self as? NSManagedObject.Type else { fatalError("newModel is not NSManagedObject") }
         let object = NSEntityDescription.insertNewObject(forEntityName: entity.entityName, into: self)
@@ -53,6 +53,6 @@ extension NSManagedObjectContext: ContextProtocol {
     public func removeAll() throws {
         throw StorageError.invalidOperation("-removeAll not available in NSManagedObjectContext. Remove the store instead")
     }
-
+    
     
 }

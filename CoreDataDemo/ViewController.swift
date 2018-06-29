@@ -13,7 +13,8 @@ enum DisplayMode {
     case Author
     case Book
 }
-
+let bil_bookManager = BILCoreDataModelManager<Book>()
+let bil_authorManager = BILCoreDataModelManager<Author>()
 class ViewController: UIViewController {
 
     @IBOutlet weak var menuView: UIView!
@@ -41,24 +42,26 @@ class ViewController: UIViewController {
         totalC = Int(self.totalCount.text!)
         threadC = Int(self.threadCount.text!)
         insertCPerThread = Int(self.insertCountPerThread.text!)
-        let manager = ModelManager(main: false)
+        
+        
+        let manager = bil_bookManager
         for _ in 0..<threadC {
-            manager.perform({ (context, save) in
+            manager.performAsync({
                 for _ in 0..<self.insertCPerThread {
                     do {
                         let bookId = Int32(Int(arc4random()) % self.totalC)
-                        var book : Book? = context.fetchModel(BILFetchRequest().filtered(with: "bookId", equalTo: "\(bookId)")).first
+                        var book : Book? =  bil_bookManager.fetch(key: "bookId", value: "\(bookId)")
                         if book == nil {
-                            book = try context.newModel()
+                            book = bil_bookManager.newModel()
                         }
                         book?.imageURL = self.imageURLArray()[Int(arc4random()%10)]
                         book?.bookName = self.randomStringWith(5).capitalized
                         book?.bookId = bookId
                         
                         let authorId = Int32(arc4random() % 4)
-                        var author : Author? = context.fetchModel(BILFetchRequest().filtered(with: "authorId", equalTo: "\(authorId)")).first
+                        var author : Author? = bil_authorManager.fetch(key: "authorId", value: "\(authorId)")
                         if author == nil {
-                            author = try context.newModel()
+                            author = bil_authorManager.newModel()
                         }
                         author?.authorId = authorId
                         author?.authorName = self.authorName()[Int(authorId)]
@@ -67,16 +70,15 @@ class ViewController: UIViewController {
                             book?.author = author
                             author?.addToBooks(book!)
                         }
-                        save()
+                        try Thread.current.context?.save()
                     } catch {
                         
                     }
                 }
-                    
-            }, completion: { (error) in
+            }) { (error) in
                 print(error?.localizedDescription ?? "")
                 self.reloadData()
-            })
+            }
             
         }
     }
@@ -107,16 +109,16 @@ class ViewController: UIViewController {
     
     @IBAction func clean(_ sender: Any)
     {
-        let authors : [Author] = ModelManager.sharedManager.context.fetchModel(BILFetchRequest())
+        let authors : [Author] = bil_authorManager.mainContext.fetchModel(BILFetchRequest())
         for author in authors  {
-            ModelManager.sharedManager.delete(author)
+            try? bil_authorManager.remove(model:author)
         }
         
-        let books : [Book] = ModelManager.sharedManager.context.fetchModel(BILFetchRequest())
+        let books : [Book] = bil_bookManager.mainContext.fetchModel(BILFetchRequest())
         for book in books  {
-            ModelManager.sharedManager.delete(book)
+            try? bil_bookManager.remove(model:book)
         }
-        ModelManager.sharedManager.save()
+        try? bil_bookManager.saveModels()
         self .reloadData()
     }
     override func viewDidLoad() {
@@ -155,7 +157,7 @@ class ViewController: UIViewController {
     }
     
     func showAllBooks() {
-        let allBooks : [Book] = ModelManager.sharedManager.context.fetchModel(BILFetchRequest())
+        let allBooks : [Book] = bil_bookManager.mainContext.fetchModel(BILFetchRequest())
         let width = UIScreen.main.bounds.size.width/3 - 27
         let height = width * 1.5
         for i in 0..<allBooks.count {
@@ -169,7 +171,7 @@ class ViewController: UIViewController {
     }
     
     func showAllAuthors() {
-        let allAuthors : [Author] = ModelManager.sharedManager.context.fetchModel(BILFetchRequest())
+        let allAuthors : [Author] = bil_authorManager.mainContext.fetchModel(BILFetchRequest())
         let width = UIScreen.main.bounds.size.width/3 - 27
         let height = width * 1.5
         for i in 0..<allAuthors.count {
