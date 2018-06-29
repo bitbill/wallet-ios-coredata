@@ -37,11 +37,26 @@ class ViewController: UIViewController {
         self.reloadData()
     }
     
+    func contactDidChanged(_: NSNotification) {
+        print("receive notification")
+    }
+    
     @IBAction func addItem(_ sender: Any)
     {
         totalC = Int(self.totalCount.text!)
         threadC = Int(self.threadCount.text!)
         insertCPerThread = Int(self.insertCountPerThread.text!)
+        
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(contactDidChanged), name:.contactDidChanged, object: nil)
+        bil_contactManager.performAsync({
+            let name = "ST"
+            let contactModel : ContactModel = bil_contactManager.newModelIfNeeded(key: "name", value: name)
+            contactModel.name = name
+            contactModel.walletID = "aaafeee"
+        }) { (error) in
+            print("insert contact")
+        }
         
         
         let manager = bil_bookManager

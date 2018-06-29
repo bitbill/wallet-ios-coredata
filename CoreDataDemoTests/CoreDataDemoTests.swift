@@ -86,19 +86,15 @@ class CoreDataDemoTests: XCTestCase {
         let expectation = XCTestExpectation(description: "testInsertSame")
         schoolManager.performAsync({
             for _ in 0...10 {
-                do {
-                    let schoolNumber = 5
-                    var school : School? = schoolManager.fetch(key: "number", value: "5")
-                    if school == nil {
-                        school = schoolManager.newModel()
-                    }
-                    school?.name = "第一高级中学"
-                    school?.address = "上海杨浦"
-                    school?.number = Int32(schoolNumber)
-                } catch {
-                    XCTAssertNotNil(error)
-                    expectation.fulfill()
+                let schoolNumber = 5
+                var school : School? = schoolManager.fetch(key: "number", value: "5")
+                if school == nil {
+                    school = schoolManager.newModel()
                 }
+                school?.name = "第一高级中学"
+                school?.address = "上海杨浦"
+                school?.number = Int32(schoolNumber)
+                expectation.fulfill()
             }
         }) { (error) in
             XCTAssertNil(error)

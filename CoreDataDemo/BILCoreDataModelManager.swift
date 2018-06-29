@@ -33,6 +33,19 @@ let bil_eos_mappingManager = BILCoreDataModelManager<EOSMappingModel>(notificati
 
 let privateContext = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
 
+extension Thread {
+    open var context : NSManagedObjectContext? {
+        get {
+            if self.isMainThread {
+                return (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+            } else {
+                return privateContext
+            }
+        }
+    }
+}
+
+
 class BILCoreDataModelManager<T: NSManagedObject>: NSObject, ModelManagerProtocol{
     
     
@@ -81,10 +94,6 @@ class BILCoreDataModelManager<T: NSManagedObject>: NSObject, ModelManagerProtoco
         let context: NSManagedObjectContext = self.context as! NSManagedObjectContext
         var _error: Error!
         context.perform {
-            let isMainThread = (Thread.current == Thread.main)
-            if !isMainThread {
-                Thread.current.bindContext(context)
-            }
             block()
             do {
                 try context.save()
@@ -109,9 +118,6 @@ class BILCoreDataModelManager<T: NSManagedObject>: NSObject, ModelManagerProtoco
                 
             } else {
                 completion(_error)
-            }
-            if !isMainThread {
-                Thread.current.removeContext()
             }
         }
     }
