@@ -155,7 +155,7 @@ class BILCoreDataModelManager<T: NSManagedObject>: NSObject, ModelManagerProtoco
     }
     
     public func newModel<T: EntityProtocol>() -> T {
-        let ct : NSManagedObjectContext = context as! NSManagedObjectContext
+        let ct : NSManagedObjectContext = Thread.current.context!
         return ct.newModel()
     }
     

@@ -58,44 +58,44 @@ class ViewController: UIViewController {
             print("insert contact")
         }
         
-        
-        let manager = bil_bookManager
-        for _ in 0..<threadC {
-            manager.performAsync({
-                for _ in 0..<self.insertCPerThread {
-                    do {
-                        let bookId = Int32(Int(arc4random()) % self.totalC)
-                        var book : Book? =  bil_bookManager.fetch(key: "bookId", value: "\(bookId)")
-                        if book == nil {
-                            book = bil_bookManager.newModel()
-                        }
-                        book?.imageURL = self.imageURLArray()[Int(arc4random()%10)]
-                        book?.bookName = self.randomStringWith(5).capitalized
-                        book?.bookId = bookId
-                        
-                        let authorId = Int32(arc4random() % 4)
-                        var author : Author? = bil_authorManager.fetch(key: "authorId", value: "\(authorId)")
-                        if author == nil {
-                            author = bil_authorManager.newModel()
-                        }
-                        author?.authorId = authorId
-                        author?.authorName = self.authorName()[Int(authorId)]
-                        
-                        if book?.author == nil {
-                            book?.author = author
-                            author?.addToBooks(book!)
-                        }
-                        try Thread.current.context?.save()
-                    } catch {
-                        
-                    }
-                }
-            }) { (error) in
-                print(error?.localizedDescription ?? "")
-                self.reloadData()
-            }
-            
-        }
+//        
+//        let manager = bil_bookManager
+//        for _ in 0..<threadC {
+//            manager.performAsync({
+//                for _ in 0..<self.insertCPerThread {
+//                    do {
+//                        let bookId = Int32(Int(arc4random()) % self.totalC)
+//                        var book : Book? =  bil_bookManager.fetch(key: "bookId", value: "\(bookId)")
+//                        if book == nil {
+//                            book = bil_bookManager.newModel()
+//                        }
+//                        book?.imageURL = self.imageURLArray()[Int(arc4random()%10)]
+//                        book?.bookName = self.randomStringWith(5).capitalized
+//                        book?.bookId = bookId
+//                        
+//                        let authorId = Int32(arc4random() % 4)
+//                        var author : Author? = bil_authorManager.fetch(key: "authorId", value: "\(authorId)")
+//                        if author == nil {
+//                            author = bil_authorManager.newModel()
+//                        }
+//                        author?.authorId = authorId
+//                        author?.authorName = self.authorName()[Int(authorId)]
+//                        
+//                        if book?.author == nil {
+//                            book?.author = author
+//                            author?.addToBooks(book!)
+//                        }
+//                        try Thread.current.context?.save()
+//                    } catch {
+//                        
+//                    }
+//                }
+//            }) { (error) in
+//                print(error?.localizedDescription ?? "")
+//                self.reloadData()
+//            }
+//            
+//        }
     }
 
     @IBAction func clickMenu(_ sender: Any)
@@ -172,31 +172,31 @@ class ViewController: UIViewController {
     }
     
     func showAllBooks() {
-        let allBooks : [Book] = bil_bookManager.mainContext.fetchModel(BILFetchRequest())
-        let width = UIScreen.main.bounds.size.width/3 - 27
-        let height = width * 1.5
-        for i in 0..<allBooks.count {
-            let book : Book = allBooks[i]
-            let col = i % 3
-            let row = i / 3
-            let bookView = BookView.init(frame: CGRect.init(x: CGFloat(col) * (width + 20) + 20, y: 20 + CGFloat(row) * (height + 20), width: width, height: height), book: book)
-            self.scrollView.addSubview(bookView)
-            self.scrollView.contentSize = CGSize.init(width: self.scrollView.contentSize.width, height: bookView.frame.maxY)
-        }
+//        let allBooks : [Book] = bil_bookManager.mainContext.fetchModel(BILFetchRequest())
+//        let width = UIScreen.main.bounds.size.width/3 - 27
+//        let height = width * 1.5
+//        for i in 0..<allBooks.count {
+//            let book : Book = allBooks[i]
+//            let col = i % 3
+//            let row = i / 3
+//            let bookView = BookView.init(frame: CGRect.init(x: CGFloat(col) * (width + 20) + 20, y: 20 + CGFloat(row) * (height + 20), width: width, height: height), book: book)
+//            self.scrollView.addSubview(bookView)
+//            self.scrollView.contentSize = CGSize.init(width: self.scrollView.contentSize.width, height: bookView.frame.maxY)
+//        }
     }
     
     func showAllAuthors() {
-        let allAuthors : [Author] = bil_authorManager.mainContext.fetchModel(BILFetchRequest())
-        let width = UIScreen.main.bounds.size.width/3 - 27
-        let height = width * 1.5
-        for i in 0..<allAuthors.count {
-            let author : Author = allAuthors[i]
-            let col = i % 3
-            let row = i / 3
-            let authorButton = AuthorButton.init(frame: CGRect.init(x: CGFloat(col) * (width + 20) + 20, y: 20 + CGFloat(row) * (height + 20), width: width, height: height), author: author)
-            self.scrollView.contentSize = CGSize.init(width: self.scrollView.contentSize.width, height: authorButton.frame.maxY)
-            self.scrollView.addSubview(authorButton)
-        }
+//        let allAuthors : [Author] = bil_authorManager.mainContext.fetchModel(BILFetchRequest())
+//        let width = UIScreen.main.bounds.size.width/3 - 27
+//        let height = width * 1.5
+//        for i in 0..<allAuthors.count {
+//            let author : Author = allAuthors[i]
+//            let col = i % 3
+//            let row = i / 3
+//            let authorButton = AuthorButton.init(frame: CGRect.init(x: CGFloat(col) * (width + 20) + 20, y: 20 + CGFloat(row) * (height + 20), width: width, height: height), author: author)
+//            self.scrollView.contentSize = CGSize.init(width: self.scrollView.contentSize.width, height: authorButton.frame.maxY)
+//            self.scrollView.addSubview(authorButton)
+//        }
     }
     
     
