@@ -3,11 +3,14 @@
 
 
 source ‘https://github.com/bitbill/wallet-ios-coredata.git’
+source ’https://github.com/bitbill/BILAlert.git’
 
 target 'CoreDataDemo' do
-  # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
+
   use_frameworks!
   pod "BitRecord"
+  pod "BILAlert"
+
   # Pods for CoreDataDemo
 
   target 'CoreDataDemoTests' do
