@@ -27,7 +27,6 @@
 		98418C0620E21FA90002CDCF /* NSManagedObjectContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98418C0420E21FA80002CDCF /* NSManagedObjectContext.swift */; };
 		98418C0820E21FBF0002CDCF /* ContextProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98418C0720E21FBE0002CDCF /* ContextProtocol.swift */; };
 		984EC2DD20E6045C00FBA8B1 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 984EC2D520E6045C00FBA8B1 /* Model.xcdatamodeld */; };
-		984EC2F020E6259B00FBA8B1 /* WalletModel2_eth.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 984EC2EC20E6259B00FBA8B1 /* WalletModel2_eth.xcdatamodeld */; };
 		985D4E2C20E33706007D2433 /* CoreDataDemo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 985D4E2A20E33706007D2433 /* CoreDataDemo.xcdatamodeld */; };
 		985D4E3220E377F0007D2433 /* BILFetchRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 985D4E3120E377F0007D2433 /* BILFetchRequest.swift */; };
 /* End PBXBuildFile section */
@@ -76,9 +75,6 @@
 		98418C0420E21FA80002CDCF /* NSManagedObjectContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSManagedObjectContext.swift; sourceTree = "<group>"; };
 		98418C0720E21FBE0002CDCF /* ContextProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContextProtocol.swift; sourceTree = "<group>"; };
 		984EC2D620E6045C00FBA8B1 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
-		984EC2ED20E6259B00FBA8B1 /* WalletModel2_ethfv3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WalletModel2_ethfv3.xcdatamodel; sourceTree = "<group>"; };
-		984EC2EE20E6259B00FBA8B1 /* WalletModel2_eth.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WalletModel2_eth.xcdatamodel; sourceTree = "<group>"; };
-		984EC2EF20E6259B00FBA8B1 /* WalletModel2_ethfv2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WalletModel2_ethfv2.xcdatamodel; sourceTree = "<group>"; };
 		985D4E2B20E33706007D2433 /* CoreDataDemo.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataDemo.xcdatamodel; sourceTree = "<group>"; };
 		985D4E3120E377F0007D2433 /* BILFetchRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BILFetchRequest.swift; sourceTree = "<group>"; };
 		98F7AAC720D9FB8B00647598 /* CoreDataDemo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CoreDataDemo-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -141,12 +137,10 @@
 				98418C0320E21FA80002CDCF /* BILCoreDataModelManager.swift */,
 				98418C0420E21FA80002CDCF /* NSManagedObjectContext.swift */,
 				98367D9720D2220100076C28 /* ViewController.swift */,
-				984EC2EC20E6259B00FBA8B1 /* WalletModel2_eth.xcdatamodeld */,
 				985D4E2A20E33706007D2433 /* CoreDataDemo.xcdatamodeld */,
 				9800945A20D8FCE000CD9CD1 /* BookView.swift */,
 				9800945C20D8FCF700CD9CD1 /* AuthorButton.swift */,
 				98367D9920D2220100076C28 /* Main.storyboard */,
-				98F7AAC720D9FB8B00647598 /* CoreDataDemo-Bridging-Header.h */,
 				98367D9F20D2220200076C28 /* Assets.xcassets */,
 				98367DA120D2220200076C28 /* LaunchScreen.storyboard */,
 				98367DA420D2220200076C28 /* Info.plist */,
@@ -325,7 +319,6 @@
 				985D4E2C20E33706007D2433 /* CoreDataDemo.xcdatamodeld in Sources */,
 				9800945920D8F49E00CD9CD1 /* Author+CoreDataProperties.swift in Sources */,
 				9800945D20D8FCF700CD9CD1 /* AuthorButton.swift in Sources */,
-				984EC2F020E6259B00FBA8B1 /* WalletModel2_eth.xcdatamodeld in Sources */,
 				9800945820D8F49E00CD9CD1 /* Author+CoreDataClass.swift in Sources */,
 				98418C0120E21F800002CDCF /* EntityProtocol.swift in Sources */,
 				9800945620D8F49E00CD9CD1 /* Book+CoreDataClass.swift in Sources */,
@@ -675,18 +668,6 @@
 			);
 			currentVersion = 984EC2D620E6045C00FBA8B1 /* Model.xcdatamodel */;
 			path = Model.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-		984EC2EC20E6259B00FBA8B1 /* WalletModel2_eth.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				984EC2ED20E6259B00FBA8B1 /* WalletModel2_ethfv3.xcdatamodel */,
-				984EC2EE20E6259B00FBA8B1 /* WalletModel2_eth.xcdatamodel */,
-				984EC2EF20E6259B00FBA8B1 /* WalletModel2_ethfv2.xcdatamodel */,
-			);
-			currentVersion = 984EC2ED20E6259B00FBA8B1 /* WalletModel2_ethfv3.xcdatamodel */;
-			path = WalletModel2_eth.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

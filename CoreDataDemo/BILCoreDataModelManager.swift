@@ -18,18 +18,6 @@ extension Notification.Name {
     static let coinDidAdded = Notification.Name("contactDidChanged")
 }
 
-let bil_contactManager = BILCoreDataModelManager<ContactModel>(notificationName: .contactDidChanged)
-let bil_btc_wallet_addressManager = BILCoreDataModelManager<BTCWalletAddressModel>(notificationName: nil)
-let bil_btc_tx_addressManager = BILCoreDataModelManager<BTCTXAddressModel>(notificationName: nil)
-let bil_btc_transactionManager = BILCoreDataModelManager<BTCTransactionModel>(notificationName: .transactionDidChanged)
-let bil_transactionManager = BILCoreDataModelManager<TransactionModel>(notificationName: .transactionDidChanged)
-let bil_btc_walletManager = BILCoreDataModelManager<BitcoinWalletModel>(notificationName: nil)
-let bil_eth_walletManager = BILCoreDataModelManager<EthereumWalletModel>(notificationName: nil)
-let bil_coin_manager = BILCoreDataModelManager<CoinModel>(notificationName: .coinDidAdded)
-let bil_eth_coinManager = BILCoreDataModelManager<ETHCoinModel>(notificationName: .coinDidAdded)
-let bil_erc20Token_Manager = BILCoreDataModelManager<ERC20Token>(notificationName: nil)
-let bil_eth_transactionManager = BILCoreDataModelManager<ETHTransactionModel>(notificationName: .transactionDidChanged)
-let bil_eos_mappingManager = BILCoreDataModelManager<EOSMappingModel>(notificationName: nil)
 
 let privateContext = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
 
@@ -182,23 +170,24 @@ class BILCoreDataModelManager<T: NSManagedObject>: NSObject, ModelManagerProtoco
         }
     }
     
-    func newModelIfNeeded(keyValues: (key: String, value: String)... , policy: BILCoreDataQueryPolicy = .match) -> T {
+    func newModelIfNeeded(keyValues: (key: String, value: AnyHashable)... , policy: BILCoreDataQueryPolicy = .match) -> T {
         guard let model = fetch(keyValues: keyValues, policy: policy) else { return newModel() }
         return model
     }
     
-    func fetch(key: String, value: String, policy: BILCoreDataQueryPolicy = .match) -> T? {
+    func fetch(key: String, value: AnyHashable, policy: BILCoreDataQueryPolicy = .match) -> T? {
         return fetch(keyValues: (key, value), policy: policy)
     }
     
-    func fetch(keyValues: [(key: String, value: String)], policy: BILCoreDataQueryPolicy = .match) -> T? {
+    func fetch(keyValues: [(key: String, value: AnyHashable)], policy: BILCoreDataQueryPolicy = .match) -> T? {
         return fetchAll(keyValues: keyValues, policy: policy).first
     }
     
-    func fetchAll(keyValues: [(key: String, value: String)], policy: BILCoreDataQueryPolicy = .match) -> [T] {
+    func fetchAll(keyValues: [(key: String, value: AnyHashable)], policy: BILCoreDataQueryPolicy = .match) -> [T] {
         var arr = [String]()
         for (key, value) in keyValues {
-            arr.append("\(key) \(policy.connector) '\(value)'")
+            let regex = String(format: "%@%@%@", key, policy.connector, value as CVarArg)
+            arr.append(regex)
         }
         let str = arr.joined(separator: " AND ")
         guard let ct = Thread.current.context else { return [] }
@@ -206,7 +195,7 @@ class BILCoreDataModelManager<T: NSManagedObject>: NSObject, ModelManagerProtoco
         return results
     }
     
-    func fetch(keyValues: (key: String, value: String)..., policy: BILCoreDataQueryPolicy = .match) -> T? {
+    func fetch(keyValues: (key: String, value: AnyHashable)..., policy: BILCoreDataQueryPolicy = .match) -> T? {
         return fetch(keyValues: keyValues, policy: policy)
     }
     

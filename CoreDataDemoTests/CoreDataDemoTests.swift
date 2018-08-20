@@ -46,7 +46,6 @@ class CoreDataDemoTests: XCTestCase {
                 fatalError("Unresolved error \(error), \(error.userInfo)")
             }
         })
-        Thread.current.bindContext(container.viewContext)
         return container
     }()
     
