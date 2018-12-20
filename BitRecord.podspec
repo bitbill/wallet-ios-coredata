@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "BitRecord"
-  s.version      = "1.3.2"
+  s.version      = "1.4.0"
   s.summary      = "BitRecord"
 
   # This description is used to generate tags and improve search results.
@@ -65,7 +65,7 @@ Pod::Spec.new do |s|
   #
 
   # s.platform     = :ios
-   s.swift_version = '3.2'
+   s.swift_version = '4.2'
    s.platform     = :ios,'10.0'
   #  When using multiple platforms
   # s.ios.deployment_target = "5.0"

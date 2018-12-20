@@ -134,10 +134,10 @@ class ViewController: UIViewController {
         segView.layer.borderWidth = 1
         segView.layer.cornerRadius = 5
         self.authorButton.isSelected = true
-        self.authorButton.setBackgroundImage(self.imageWith(UIColor.cyan, size: self.authorButton.frame.size), for: UIControlState.selected)
+        self.authorButton.setBackgroundImage(self.imageWith(UIColor.cyan, size: self.authorButton.frame.size), for: UIControl.State.selected)
         self.authorButton.addTarget(self, action:#selector(handleAuthor), for: .touchUpInside)
         
-        self.bookButton.setBackgroundImage(self.imageWith(UIColor.cyan, size: self.bookButton.frame.size), for: UIControlState.selected)
+        self.bookButton.setBackgroundImage(self.imageWith(UIColor.cyan, size: self.bookButton.frame.size), for: UIControl.State.selected)
         self.bookButton.addTarget(self, action: #selector(handleBook), for: .touchUpInside)
         self .reloadData()
         // Do any additional setup after loading the view, typically from a nib.
